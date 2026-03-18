@@ -1,4 +1,4 @@
-# CLAUDE.md — AI Agent Guide for astro-template
+# CLAUDE.md — AI Agent Guide for Haynes Industrial Listings Site
 
 This file is the authoritative reference for AI agents (Claude, Copilot, etc.)
 working on this codebase. Read it before writing any code.
@@ -7,14 +7,40 @@ working on this codebase. Read it before writing any code.
 
 ## Project overview
 
-A production-ready Astro.js blog template. Key characteristics:
+Commercial equipment listings site for [Haynes Industrial](https://haynesindustrial.com),
+hosted at `listings.haynesindustrial.com`. Lists salvaged industrial equipment
+and materials for sale — no e-commerce; all CTAs link to
+`mailto:jon@haynesindustrial.com` with pre-filled subjects.
+
+Built on the [Astro.js Launchpad](https://github.com/switchbacksolutions/astrojs-launchpad)
+template by [Switchback Solutions](https://www.switchbacksolutions.net/).
+
+Key characteristics:
 
 - **Static output** — no server runtime; every page is pre-rendered HTML
 - **Zero client JS by default** — only the dark-mode toggle script ships JS
-- **Content Collections** — type-safe Markdown/MDX blog posts validated by Zod
-- **Tailwind CSS** — utility-first styling; no custom CSS frameworks
+- **Content Collections** — type-safe Markdown/MDX listing posts validated by Zod
+- **Tailwind CSS** — utility-first styling with Haynes Industrial brand colors
 - **CloudCannon CMS** — editors manage content through a visual interface
 - **Netlify hosting** — `netlify.toml` drives build, headers, and redirects
+
+### Brand colors (Tailwind custom scale)
+- `brand-600` `#345e7d` — steel blue (links, accents)
+- `brand-700` `#2a4d68` — header / dark sections
+- `brand-800` `#1f3a50`
+- `brand-900` `#132538`
+- `gold-500` `#caa222` — primary CTA buttons
+- `gold-400` `#d4ae3a`
+
+### Typography
+- **Headings:** Montserrat (`font-heading`)
+- **Body:** Inter (`font-sans`)
+
+### Design rules
+- No dark mode — this is an industrial B2B site
+- `rounded-sm` corners (not `rounded-xl`)
+- Uppercase + `tracking-wide` for labels and category tags
+- All purchase/inquiry CTAs → `mailto:jon@haynesindustrial.com`
 
 ---
 
