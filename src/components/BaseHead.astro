@@ -5,6 +5,8 @@
  * Google Fonts, and the global stylesheet.
  */
 
+import '@/styles/global.css';
+
 interface Props {
   title: string;
   description: string;
@@ -62,5 +64,3 @@ const canonical = new URL(canonicalURL, Astro.site ?? Astro.url).href;
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(image, Astro.site ?? Astro.url).href} />
 
-<!-- Global stylesheet -->
-<link rel="stylesheet" href="/src/styles/global.css" />
