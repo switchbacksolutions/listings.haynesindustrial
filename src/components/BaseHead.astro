@@ -1,26 +1,18 @@
 ---
 /**
  * BaseHead.astro
- * ─────────────────────────────────────────────────────────────────────────────
- * Renders all <head> content: charset, viewport, title, meta description,
- * canonical URL, Open Graph / Twitter card tags, and the global stylesheet.
- *
- * Usage:
- *   <BaseHead title="Page Title" description="Page description." />
+ * Renders all <head> content: charset, viewport, title, meta, OG tags,
+ * Google Fonts, and the global stylesheet.
  */
 
 interface Props {
-  /** Page <title> — appended with the site name */
   title: string;
-  /** Meta description and OG description */
   description: string;
-  /** Absolute URL to OG image (defaults to /og-default.png) */
   image?: string;
-  /** Canonical URL — defaults to the current page URL */
   canonicalURL?: URL | string;
 }
 
-const SITE_NAME = 'Astro Template';
+const SITE_NAME = 'Haynes Industrial Listings';
 
 const {
   title,
@@ -41,19 +33,19 @@ const canonical = new URL(canonicalURL, Astro.site ?? Astro.url).href;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+<!-- Google Fonts: Montserrat (headings) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
 <!-- Primary meta -->
 <title>{pageTitle}</title>
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonical} />
-
-<!-- RSS auto-discovery -->
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  title={`${SITE_NAME} RSS Feed`}
-  href="/rss.xml"
-/>
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />

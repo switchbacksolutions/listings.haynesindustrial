@@ -1,70 +1,95 @@
 ---
 /**
  * Footer.astro
- * ─────────────────────────────────────────────────────────────────────────────
- * Site-wide footer with copyright, navigation links, and an RSS link.
+ * Site-wide footer matching Haynes Industrial branding.
  */
 
 const year = new Date().getFullYear();
-
-const FOOTER_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/about', label: 'About' },
-  { href: '/rss.xml', label: 'RSS', external: true },
-];
 ---
 
-<footer class="border-t border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-    <div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
-      <!-- Site name -->
-      <p class="text-sm font-semibold text-gray-900 dark:text-white">
-        Astro Template
-      </p>
+<footer class="bg-brand-900 text-white">
+  <div class="section-container py-12">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
 
-      <!-- Footer navigation -->
-      <nav aria-label="Footer navigation">
-        <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 list-none m-0 p-0">
-          {FOOTER_LINKS.map(({ href, label, external }) => (
+      <!-- Brand column -->
+      <div>
+        <p class="font-heading text-lg font-bold uppercase tracking-wide text-white">
+          Haynes Industrial
+        </p>
+        <p class="mt-1 text-xs font-medium uppercase tracking-widest text-brand-300">
+          Equipment &amp; Materials
+        </p>
+        <p class="mt-4 text-sm text-brand-200 leading-relaxed">
+          Demolition, recycling, and universal waste management services across
+          Northern California.
+        </p>
+        <a
+          href="https://www.haynesindustrial.com"
+          class="mt-4 inline-block text-sm text-gold-400 no-underline hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit our main site →
+        </a>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <p class="font-heading text-xs font-bold uppercase tracking-widest text-brand-300 mb-4">
+          Quick Links
+        </p>
+        <ul class="space-y-2 list-none m-0 p-0">
+          {[
+            { href: '/', label: 'All Listings' },
+            { href: '/contact', label: 'Contact Us' },
+            { href: 'https://www.haynesindustrial.com', label: 'Main Website', external: true },
+          ].map(({ href, label, external }) => (
             <li>
               <a
                 href={href}
-                class="text-sm text-gray-500 no-underline hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
-                rel={external ? 'noopener noreferrer' : undefined}
+                class="text-sm text-brand-200 no-underline hover:text-white transition-colors"
                 target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
               >
                 {label}
-                {external && (
-                  <span class="sr-only">(opens in new tab)</span>
-                )}
               </a>
             </li>
           ))}
         </ul>
-      </nav>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="font-heading text-xs font-bold uppercase tracking-widest text-brand-300 mb-4">
+          Get in Touch
+        </p>
+        <p class="text-sm text-brand-200 mb-3">
+          Interested in an item or have a custom request? Reach out directly.
+        </p>
+        <a
+          href="mailto:jon@haynesindustrial.com"
+          class="text-sm text-gold-400 no-underline hover:underline break-all"
+        >
+          jon@haynesindustrial.com
+        </a>
+        <div class="mt-4">
+          <p class="text-xs text-brand-400 uppercase tracking-wide mb-2">Follow us</p>
+          <a
+            href="https://www.instagram.com/haynesindustrial"
+            class="text-sm text-brand-200 no-underline hover:text-white transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @haynesindustrial
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- Copyright -->
-    <p class="mt-8 text-center text-xs text-gray-400 dark:text-gray-500">
-      &copy; {year} Astro Template. Built with{' '}
-      <a
-        href="https://astro.build"
-        class="text-brand-500 no-underline hover:underline"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Astro
-      </a>{' '}
-      &amp;{' '}
-      <a
-        href="https://tailwindcss.com"
-        class="text-brand-500 no-underline hover:underline"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Tailwind CSS
-      </a>.
-    </p>
+    <div class="mt-10 border-t border-brand-700 pt-6 text-center">
+      <p class="text-xs text-brand-400">
+        &copy; {year} Haynes Industrial. All rights reserved. Northern California.
+      </p>
+    </div>
   </div>
 </footer>

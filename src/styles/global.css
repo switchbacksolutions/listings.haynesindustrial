@@ -2,29 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── CSS Custom Properties ─────────────────────────────────────────────────── */
-:root {
-  --color-text: theme('colors.gray.900');
-  --color-bg: theme('colors.white');
-  --color-border: theme('colors.gray.200');
-}
-
-.dark {
-  --color-text: theme('colors.gray.100');
-  --color-bg: theme('colors.gray.950');
-  --color-border: theme('colors.gray.700');
-}
-
 /* ─── Base resets & typography ──────────────────────────────────────────────── */
 @layer base {
   html {
-    @apply scroll-smooth antialiased;
-    color: var(--color-text);
-    background-color: var(--color-bg);
+    @apply scroll-smooth antialiased text-gray-900 bg-white;
   }
 
   body {
     @apply min-h-screen font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
   }
 
   h1 { @apply text-4xl font-bold tracking-tight; }
@@ -35,14 +24,13 @@
   h6 { @apply text-base font-medium; }
 
   a {
-    @apply text-brand-600 underline-offset-4 hover:underline dark:text-brand-400;
+    @apply text-brand-600 underline-offset-4 hover:underline;
   }
 
   img {
     @apply max-w-full h-auto;
   }
 
-  /* Focus visible for accessibility */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-brand-500;
   }
@@ -50,62 +38,74 @@
 
 /* ─── Reusable component classes ────────────────────────────────────────────── */
 @layer components {
-  /* Primary button */
+  /* Gold CTA button — primary action */
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-md bg-brand-600 px-4 py-2
-           text-sm font-medium text-white shadow-sm
-           hover:bg-brand-700 focus:outline-none focus:ring-2
-           focus:ring-brand-500 focus:ring-offset-2
-           transition-colors duration-150 cursor-pointer;
+    @apply inline-flex items-center gap-2 rounded-sm bg-gold-500 px-6 py-3
+           text-sm font-semibold font-heading text-gray-900 shadow-sm uppercase tracking-wide
+           hover:bg-gold-400 focus:outline-none focus:ring-2
+           focus:ring-gold-500 focus:ring-offset-2
+           transition-colors duration-150 cursor-pointer no-underline;
   }
 
-  /* Secondary / outline button */
+  /* Steel blue secondary button */
   .btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white
-           px-4 py-2 text-sm font-medium text-gray-700 shadow-sm
-           hover:bg-gray-50 focus:outline-none focus:ring-2
+    @apply inline-flex items-center gap-2 rounded-sm border-2 border-brand-600 bg-transparent
+           px-6 py-3 text-sm font-semibold font-heading text-brand-600 uppercase tracking-wide
+           hover:bg-brand-600 hover:text-white focus:outline-none focus:ring-2
            focus:ring-brand-500 focus:ring-offset-2
-           dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200
-           dark:hover:bg-gray-700 transition-colors duration-150 cursor-pointer;
+           transition-colors duration-150 cursor-pointer no-underline;
   }
 
-  /* Tag / badge pill */
-  .tag-pill {
-    @apply inline-block rounded-full bg-brand-100 px-3 py-0.5 text-xs font-medium
-           text-brand-800 dark:bg-brand-900 dark:text-brand-200;
+  /* White outline button — for use on dark backgrounds */
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 rounded-sm border-2 border-white bg-transparent
+           px-6 py-3 text-sm font-semibold font-heading text-white uppercase tracking-wide
+           hover:bg-white hover:text-brand-800 focus:outline-none focus:ring-2
+           focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-700
+           transition-colors duration-150 cursor-pointer no-underline;
   }
 
-  /* Card container */
-  .card {
-    @apply rounded-xl border border-gray-200 bg-white p-6 shadow-sm
-           hover:shadow-md transition-shadow
-           dark:border-gray-700 dark:bg-gray-800;
+  /* Category / condition badge pill */
+  .badge {
+    @apply inline-block rounded-sm px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide;
   }
 
-  /* Prose wrapper for Markdown / MDX content */
+  .badge-category {
+    @apply badge bg-brand-100 text-brand-800;
+  }
+
+  .badge-condition {
+    @apply badge bg-gray-100 text-gray-700;
+  }
+
+  .badge-available {
+    @apply badge bg-green-100 text-green-800;
+  }
+
+  .badge-sold {
+    @apply badge bg-red-100 text-red-700;
+  }
+
+  /* Listing card */
+  .listing-card {
+    @apply rounded-sm border border-gray-200 bg-white shadow-sm
+           hover:shadow-md hover:border-brand-300 transition-all duration-200;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply mx-auto max-w-6xl px-4 sm:px-6;
+  }
+
+  /* Prose wrapper for listing body content */
   .prose-content {
     @apply prose prose-gray max-w-none
-           prose-headings:font-semibold
-           prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline
-           prose-code:rounded prose-code:bg-brand-50 prose-code:px-1 prose-code:py-0.5
-           prose-code:text-brand-700 prose-code:before:content-none prose-code:after:content-none
-           dark:prose-invert;
+           prose-headings:font-heading
+           prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline;
   }
 
-  /* Visually hidden but accessible to screen readers */
   .sr-only {
     @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
     clip: rect(0, 0, 0, 0);
-  }
-}
-
-/* ─── Utility extensions ────────────────────────────────────────────────────── */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .text-pretty {
-    text-wrap: pretty;
   }
 }

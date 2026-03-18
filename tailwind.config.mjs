@@ -6,20 +6,28 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['Montserrat', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {
         brand: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50:  '#f0f5f9',
+          100: '#dce8f1',
+          200: '#b5cfe2',
+          300: '#84afca',
+          400: '#5b8daf',
+          500: '#3d6f8f',
+          600: '#345e7d',
+          700: '#2a4d68',
+          800: '#1f3a50',
+          900: '#132538',
+        },
+        gold: {
+          300: '#e2c55a',
+          400: '#d4ae3a',
+          500: '#caa222',
+          600: '#a8861c',
+          700: '#896d16',
         },
       },
       typography: (theme) => ({
@@ -28,33 +36,9 @@ export default {
             color: theme('colors.gray.800'),
             a: {
               color: theme('colors.brand.600'),
-              '&:hover': {
-                color: theme('colors.brand.800'),
-              },
+              '&:hover': { color: theme('colors.brand.800') },
             },
-            'h1, h2, h3, h4': {
-              color: theme('colors.gray.900'),
-            },
-            code: {
-              color: theme('colors.brand.700'),
-              backgroundColor: theme('colors.brand.50'),
-              padding: '0.2em 0.4em',
-              borderRadius: '0.25rem',
-            },
-          },
-        },
-        dark: {
-          css: {
-            color: theme('colors.gray.200'),
-            a: {
-              color: theme('colors.brand.400'),
-              '&:hover': {
-                color: theme('colors.brand.200'),
-              },
-            },
-            'h1, h2, h3, h4': {
-              color: theme('colors.gray.100'),
-            },
+            'h1, h2, h3, h4': { color: theme('colors.gray.900') },
           },
         },
       }),

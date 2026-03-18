@@ -1,17 +1,7 @@
 ---
 /**
  * BaseLayout.astro
- * ─────────────────────────────────────────────────────────────────────────────
- * Root page shell used by every page. Composes BaseHead + Header + Footer
- * around a full-page slot.
- *
- * Usage:
- *   ---
- *   import BaseLayout from '@/layouts/BaseLayout.astro';
- *   ---
- *   <BaseLayout title="Page Title" description="Page description.">
- *     <main>...</main>
- *   </BaseLayout>
+ * Root page shell: BaseHead + Header + slot + Footer.
  */
 
 import BaseHead from '@/components/BaseHead.astro';
@@ -19,11 +9,8 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 
 interface Props {
-  /** Page <title> — will be appended with the site name */
   title: string;
-  /** SEO meta description */
   description: string;
-  /** Optional OG image URL */
   image?: string;
 }
 
@@ -35,7 +22,7 @@ const { title, description, image } = Astro.props;
   <head>
     <BaseHead title={title} description={description} image={image} />
   </head>
-  <body class="flex min-h-full flex-col bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+  <body class="flex min-h-full flex-col bg-white text-gray-900">
     <Header />
 
     <div class="flex-1">

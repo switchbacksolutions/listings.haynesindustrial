@@ -1,124 +1,187 @@
 ---
 /**
- * src/pages/index.astro — Home page
- *
- * Shows a hero section and the three most recent published blog posts.
+ * src/pages/listings/index.astro — All listings grid
+ * Shows all available items with category filter via URL param.
  */
 
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import FormattedDate from '@/components/FormattedDate.astro';
 
-const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const recentPosts = allPosts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const allListings = await getCollection('listings', ({ data }) => data.available);
+allListings.sort((a, b) => {
+  // Featured first, then alphabetical
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+  return a.data.title.localeCompare(b.data.title);
+});
+
+const categories = [...new Set(allListings.map((l) => l.data.category))].sort();
+
+// Read category filter from URL (handled client-side via script below)
 ---
 
 <BaseLayout
-  title="Astro Template"
-  description="A production-ready Astro blog template with Tailwind CSS, MDX, and CloudCannon CMS support."
+  title="All Listings"
+  description="Browse all available industrial equipment and salvage materials from Haynes Industrial in Northern California. Contact us to make an offer."
 >
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-brand-50 to-white dark:from-gray-900 dark:to-gray-950">
-    <div class="mx-auto max-w-4xl px-4 py-24 sm:px-6 text-center">
-      <h1 class="text-5xl font-bold tracking-tight text-gray-900 dark:text-white text-balance">
-        Welcome to<br />
-        <span class="text-brand-600 dark:text-brand-400">Astro Template</span>
-      </h1>
-      <p class="mx-auto mt-6 max-w-2xl text-xl text-gray-600 dark:text-gray-400 text-pretty">
-        A production-ready starter with Astro, Tailwind CSS, MDX, content
-        collections, CloudCannon CMS integration, and Netlify deployment.
+  <!-- Page header -->
+  <div class="bg-brand-700 text-white">
+    <div class="section-container py-12">
+      <p class="font-heading text-xs font-bold uppercase tracking-widest text-gold-400 mb-2">
+        Available Inventory
       </p>
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="/blog" class="btn-primary">
-          Read the blog
-        </a>
-        <a href="/about" class="btn-secondary">
-          About this template
-        </a>
-      </div>
+      <h1 class="text-3xl font-bold text-white">All Listings</h1>
+      <p class="mt-2 text-brand-200 text-sm max-w-xl">
+        Materials and equipment recovered from demolition and recycling projects across Northern California.
+        Prices on request — no online checkout.
+      </p>
     </div>
-  </section>
+  </div>
 
-  <!-- Recent posts -->
-  {recentPosts.length > 0 && (
-    <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-      <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
-          Recent Posts
-        </h2>
-        <a
-          href="/blog"
-          class="text-sm font-medium text-brand-600 no-underline hover:underline dark:text-brand-400"
-        >
-          View all →
-        </a>
+  <div class="section-container py-12">
+    <!-- Filter bar -->
+    <div class="flex flex-wrap items-center gap-3 mb-8">
+      <span class="font-heading text-xs font-bold uppercase tracking-widest text-gray-500">Filter:</span>
+      <button
+        data-category=""
+        class="category-filter badge border border-gray-300 text-gray-600 cursor-pointer hover:border-brand-600 hover:text-brand-700 bg-white transition-colors active-filter"
+      >
+        All ({allListings.length})
+      </button>
+      {categories.map((cat) => {
+        const count = allListings.filter((l) => l.data.category === cat).length;
+        return (
+          <button
+            data-category={cat}
+            class="category-filter badge border border-gray-300 text-gray-600 cursor-pointer hover:border-brand-600 hover:text-brand-700 bg-white transition-colors"
+          >
+            {cat} ({count})
+          </button>
+        );
+      })}
+    </div>
+
+    <!-- Listings grid -->
+    {allListings.length === 0 ? (
+      <div class="text-center py-24 text-gray-400">
+        <p class="text-lg font-semibold">No listings currently available.</p>
+        <p class="mt-2 text-sm">Check back soon or <a href="/contact">contact us</a> with your requirements.</p>
       </div>
-
-      <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 list-none m-0 p-0">
-        {recentPosts.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}`} class="group block card h-full no-underline">
-              {post.data.heroImage && (
+    ) : (
+      <ul id="listings-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 list-none m-0 p-0">
+        {allListings.map((listing) => (
+          <li data-category={listing.data.category} class="listing-item">
+            <a href={`/listings/${listing.slug}`} class="listing-card block no-underline group h-full">
+              {/* Image or placeholder */}
+              {(listing.data.primaryImage ?? listing.data.images[0]) ? (
                 <img
-                  src={post.data.heroImage}
-                  alt={post.data.title}
-                  class="mb-4 h-40 w-full rounded-lg object-cover"
+                  src={listing.data.primaryImage ?? listing.data.images[0]}
+                  alt={listing.data.title}
+                  class="w-full h-48 object-cover rounded-t-sm"
                   loading="lazy"
-                  width={600}
-                  height={315}
                 />
-              )}
-
-              {post.data.tags.length > 0 && (
-                <div class="mb-2 flex flex-wrap gap-1">
-                  {post.data.tags.slice(0, 2).map((tag) => (
-                    <span class="tag-pill">{tag}</span>
-                  ))}
+              ) : (
+                <div class="w-full h-48 bg-brand-50 flex items-center justify-center rounded-t-sm border-b border-gray-100">
+                  <svg class="h-12 w-12 text-brand-200" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
+                  </svg>
                 </div>
               )}
 
-              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400 transition-colors text-balance">
-                {post.data.title}
-              </h3>
+              <div class="p-5">
+                <div class="flex items-center gap-2 mb-3 flex-wrap">
+                  <span class="badge-category">{listing.data.category}</span>
+                  {listing.data.condition && (
+                    <span class="badge-condition">{listing.data.condition}</span>
+                  )}
+                  {listing.data.featured && (
+                    <span class="badge bg-gold-100 text-gold-700">Featured</span>
+                  )}
+                </div>
 
-              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
-                {post.data.description}
-              </p>
+                {listing.data.sku && (
+                  <p class="text-xs text-gray-400 font-mono mb-1">SKU: {listing.data.sku}</p>
+                )}
 
-              <p class="mt-4 text-xs">
-                <FormattedDate date={post.data.pubDate} format="short" />
-              </p>
+                <h2 class="font-heading text-base font-bold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug">
+                  {listing.data.title}
+                </h2>
+
+                <p class="mt-2 text-sm text-gray-500 line-clamp-2">
+                  {listing.data.description}
+                </p>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <span class="font-heading text-sm font-bold text-brand-700">
+                    {listing.data.price ?? 'Contact for Pricing'}
+                  </span>
+                  <span class="text-xs font-semibold text-brand-600 uppercase tracking-wide group-hover:underline">
+                    View Details →
+                  </span>
+                </div>
+              </div>
             </a>
           </li>
         ))}
       </ul>
-    </section>
-  )}
+    )}
 
-  <!-- Feature highlights -->
-  <section class="bg-gray-50 dark:bg-gray-900">
-    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-      <h2 class="mb-10 text-center text-2xl font-semibold text-gray-900 dark:text-white">
-        What's included
-      </h2>
-      <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 list-none m-0 p-0">
-        {[
-          { emoji: '⚡', title: 'Astro + TypeScript', desc: 'Zero-JS by default with full type safety.' },
-          { emoji: '🎨', title: 'Tailwind CSS', desc: 'Utility-first styling with dark mode support.' },
-          { emoji: '📝', title: 'MDX Blog', desc: 'Write posts in Markdown with JSX components.' },
-          { emoji: '🗺️', title: 'Sitemap & RSS', desc: 'Auto-generated sitemap.xml and RSS feed.' },
-          { emoji: '🔒', title: 'Security Headers', desc: 'Production-ready headers via Netlify.' },
-          { emoji: '🧪', title: 'Testing', desc: 'Vitest unit tests + Playwright E2E tests.' },
-        ].map(({ emoji, title, desc }) => (
-          <li class="card">
-            <p class="text-3xl mb-3" aria-hidden="true">{emoji}</p>
-            <h3 class="font-semibold text-gray-900 dark:text-white">{title}</h3>
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">{desc}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
+    <!-- Empty state (shown by JS when filter has no results) -->
+    <p id="no-results" class="hidden text-center py-16 text-gray-400 text-sm">
+      No listings in this category. <a href="/">Clear filter</a>
+    </p>
+  </div>
 </BaseLayout>
+
+<script>
+  // Client-side category filter
+  const params = new URLSearchParams(window.location.search);
+  let activeCategory = params.get('category') ?? '';
+
+  function applyFilter(cat: string) {
+    activeCategory = cat;
+
+    // Update button states
+    document.querySelectorAll<HTMLButtonElement>('.category-filter').forEach((btn) => {
+      const isActive = btn.dataset.category === cat;
+      btn.classList.toggle('active-filter', isActive);
+      btn.classList.toggle('bg-brand-600', isActive);
+      btn.classList.toggle('text-white', isActive);
+      btn.classList.toggle('border-brand-600', isActive);
+      btn.classList.toggle('bg-white', !isActive);
+      btn.classList.toggle('text-gray-600', !isActive);
+      btn.classList.toggle('border-gray-300', !isActive);
+    });
+
+    // Show/hide listing items
+    const items = document.querySelectorAll<HTMLLIElement>('.listing-item');
+    let visible = 0;
+    items.forEach((item) => {
+      const matches = !cat || item.dataset.category === cat;
+      item.style.display = matches ? '' : 'none';
+      if (matches) visible++;
+    });
+
+    const noResults = document.getElementById('no-results');
+    if (noResults) noResults.classList.toggle('hidden', visible > 0);
+
+    // Update URL without reload
+    const url = new URL(window.location.href);
+    if (cat) {
+      url.searchParams.set('category', cat);
+    } else {
+      url.searchParams.delete('category');
+    }
+    window.history.replaceState({}, '', url.toString());
+  }
+
+  // Wire up filter buttons
+  document.querySelectorAll<HTMLButtonElement>('.category-filter').forEach((btn) => {
+    btn.addEventListener('click', () => applyFilter(btn.dataset.category ?? ''));
+  });
+
+  // Apply filter from URL on page load
+  if (activeCategory) {
+    applyFilter(activeCategory);
+  }
+</script>

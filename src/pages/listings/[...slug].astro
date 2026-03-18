@@ -1,0 +1,247 @@
+---
+/**
+ * src/pages/listings/[...slug].astro — Individual listing detail page
+ */
+
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const listings = await getCollection('listings', ({ data }) => data.available);
+  return listings.map((listing) => ({
+    params: { slug: listing.slug },
+    props: { listing },
+  }));
+}
+
+interface Props {
+  listing: CollectionEntry<'listings'>;
+}
+
+const { listing } = Astro.props;
+const { Content } = await listing.render();
+const { title, description, category, condition, price, sku, images, primaryImage, available } = listing.data;
+
+// The hero is the designated primaryImage, falling back to images[0]
+const heroSrc = primaryImage ?? images[0] ?? null;
+// Thumbnails: all images, ordered so the primary image is first
+const thumbnails = heroSrc
+  ? [heroSrc, ...images.filter((src) => src !== heroSrc)]
+  : images;
+
+const emailSubject = encodeURIComponent(`Inquiry: ${title} (SKU: ${sku ?? listing.slug})`);
+const emailBody = encodeURIComponent(
+  `Hi Jon,\n\nI'm interested in the following item from your listings:\n\nItem: ${title}\nSKU: ${sku ?? listing.slug}\n\nPlease let me know pricing and availability.\n\nThank you,\n`
+);
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Breadcrumb -->
+  <div class="bg-gray-50 border-b border-gray-200">
+    <div class="section-container py-3">
+      <nav aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-xs text-gray-500 list-none m-0 p-0">
+          <li><a href="/" class="no-underline hover:text-brand-600">Home</a></li>
+          <li aria-hidden="true" class="text-gray-300">/</li>
+          <li><a href="/" class="no-underline hover:text-brand-600">Listings</a></li>
+          <li aria-hidden="true" class="text-gray-300">/</li>
+          <li class="text-gray-700 truncate max-w-[200px]">{title}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="section-container py-12">
+    <div class="grid gap-10 lg:grid-cols-3">
+
+      <!-- Left: image + metadata -->
+      <div class="lg:col-span-1 order-2 lg:order-1">
+
+        <!-- Image gallery -->
+        {heroSrc ? (
+          <div class="gallery" data-gallery>
+            <!-- Hero / main image -->
+            <div class="relative rounded-sm border border-gray-200 overflow-hidden bg-gray-50">
+              <img
+                id="gallery-hero"
+                src={heroSrc}
+                alt={`${title} — primary image`}
+                class="w-full object-contain max-h-[400px]"
+                loading="eager"
+              />
+              {thumbnails.length > 1 && (
+                <span class="absolute bottom-2 right-2 bg-black/50 text-white text-xs font-mono px-2 py-0.5 rounded-full pointer-events-none" id="gallery-counter">
+                  1 / {thumbnails.length}
+                </span>
+              )}
+            </div>
+
+            <!-- Thumbnail strip (only when 2+ images) -->
+            {thumbnails.length > 1 && (
+              <div class="mt-3 flex gap-2 flex-wrap">
+                {thumbnails.map((src, i) => (
+                  <button
+                    type="button"
+                    class:list={[
+                      'gallery-thumb',
+                      'rounded-sm border-2 overflow-hidden transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500',
+                      i === 0 ? 'border-brand-600' : 'border-transparent hover:border-gray-400',
+                    ]}
+                    data-src={src}
+                    data-index={i}
+                    aria-label={`View image ${i + 1}`}
+                    aria-pressed={i === 0 ? 'true' : 'false'}
+                  >
+                    <img
+                      src={src}
+                      alt=""
+                      class="w-16 h-16 object-cover block"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div class="w-full aspect-video bg-brand-50 rounded-sm border border-gray-200 flex items-center justify-center">
+            <svg class="h-16 w-16 text-brand-200" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
+            </svg>
+          </div>
+        )}
+
+        <!-- Metadata card -->
+        <div class="mt-6 rounded-sm border border-gray-200 divide-y divide-gray-100">
+          <div class="px-4 py-3 bg-brand-700 rounded-t-sm">
+            <p class="font-heading text-xs font-bold uppercase tracking-widest text-brand-200">Item Details</p>
+          </div>
+          <div class="px-4 py-3 flex justify-between text-sm">
+            <span class="text-gray-500">Category</span>
+            <span class="font-semibold text-gray-800">{category}</span>
+          </div>
+          {condition && (
+            <div class="px-4 py-3 flex justify-between text-sm">
+              <span class="text-gray-500">Condition</span>
+              <span class="font-semibold text-gray-800">{condition}</span>
+            </div>
+          )}
+          <div class="px-4 py-3 flex justify-between text-sm">
+            <span class="text-gray-500">Pricing</span>
+            <span class="font-heading font-bold text-brand-700">{price ?? 'Contact for Pricing'}</span>
+          </div>
+          {sku && (
+            <div class="px-4 py-3 flex justify-between text-sm">
+              <span class="text-gray-500">SKU</span>
+              <span class="font-mono text-gray-600">{sku}</span>
+            </div>
+          )}
+          <div class="px-4 py-3 flex justify-between text-sm">
+            <span class="text-gray-500">Status</span>
+            <span class:list={[available ? 'badge-available' : 'badge-sold']}>
+              {available ? 'Available' : 'Sold'}
+            </span>
+          </div>
+        </div>
+
+        <!-- Contact CTA box -->
+        <div class="mt-6 rounded-sm border-2 border-gold-500 p-5 bg-gold-50">
+          <p class="font-heading text-sm font-bold text-gray-900 mb-1">Interested in this item?</p>
+          <p class="text-xs text-gray-600 mb-4 leading-relaxed">
+            No online checkout — contact us directly to discuss pricing, availability, and pickup.
+          </p>
+          <a
+            href={`mailto:jon@haynesindustrial.com?subject=${emailSubject}&body=${emailBody}`}
+            class="btn-primary w-full justify-center"
+          >
+            Request a Quote
+          </a>
+          <p class="mt-3 text-center text-xs text-gray-400">
+            or email <a href="mailto:jon@haynesindustrial.com" class="text-brand-600 no-underline hover:underline">jon@haynesindustrial.com</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: title + description + full content -->
+      <div class="lg:col-span-2 order-1 lg:order-2">
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="badge-category">{category}</span>
+          {condition && <span class="badge-condition">{condition}</span>}
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+          {title}
+        </h1>
+
+        <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+          {description}
+        </p>
+
+        <hr class="my-8 border-gray-200" />
+
+        <!-- Markdown body -->
+        <div class="prose prose-gray max-w-none
+                    prose-headings:font-heading prose-headings:text-gray-900
+                    prose-h2:text-xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4
+                    prose-table:text-sm
+                    prose-th:bg-brand-50 prose-th:text-brand-800 prose-th:font-semibold
+                    prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline">
+          <Content />
+        </div>
+
+        <!-- Back link -->
+        <div class="mt-10 pt-6 border-t border-gray-200">
+          <a href="/" class="text-sm font-semibold text-brand-600 no-underline hover:underline">
+            ← Back to All Listings
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA strip -->
+  <div class="bg-brand-700">
+    <div class="section-container py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="font-heading text-lg font-bold text-white">Ready to make an offer?</p>
+        <p class="text-brand-200 text-sm mt-1">Contact Jon directly — quick responses guaranteed.</p>
+      </div>
+      <a
+        href={`mailto:jon@haynesindustrial.com?subject=${emailSubject}&body=${emailBody}`}
+        class="btn-primary flex-shrink-0"
+      >
+        Email Us About This Item
+      </a>
+    </div>
+  </div>
+
+<script>
+  const hero = document.getElementById('gallery-hero') as HTMLImageElement | null;
+  const counter = document.getElementById('gallery-counter');
+  const thumbs = document.querySelectorAll<HTMLButtonElement>('.gallery-thumb');
+
+  thumbs.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!hero) return;
+
+      // Swap hero src
+      hero.src = btn.dataset.src ?? hero.src;
+      hero.alt = btn.getAttribute('aria-label') ?? hero.alt;
+
+      // Update counter
+      const idx = Number(btn.dataset.index ?? 0);
+      if (counter) counter.textContent = `${idx + 1} / ${thumbs.length}`;
+
+      // Update active thumb styles
+      thumbs.forEach((t) => {
+        const isActive = t === btn;
+        t.classList.toggle('border-brand-600', isActive);
+        t.classList.toggle('border-transparent', !isActive);
+        t.classList.toggle('hover:border-gray-400', !isActive);
+        t.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    });
+  });
+</script>
+</BaseLayout>

@@ -1,15 +1,13 @@
 ---
 /**
  * Header.astro
- * ─────────────────────────────────────────────────────────────────────────────
- * Site-wide header with navigation links and a dark-mode toggle.
- * The active link is highlighted based on the current URL pathname.
+ * Site header matching Haynes Industrial branding.
+ * Steel blue background, white navigation, gold CTA.
  */
 
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/about', label: 'About' },
+  { href: '/', label: 'Listings' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const pathname = new URL(Astro.request.url).pathname;
@@ -20,28 +18,46 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur dark:border-gray-700 dark:bg-gray-900/90">
-  <div class="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6">
-    <!-- Logo / site name -->
+<!-- Top bar: back-link to main site -->
+<div class="bg-brand-900 py-1.5">
+  <div class="section-container flex justify-end">
     <a
-      href="/"
-      class="text-xl font-bold text-gray-900 no-underline hover:text-brand-600 dark:text-white dark:hover:text-brand-400 transition-colors"
+      href="https://www.haynesindustrial.com"
+      class="text-xs text-brand-200 no-underline hover:text-white transition-colors"
+      target="_blank"
+      rel="noopener noreferrer"
     >
-      Astro Template
+      ← Back to Haynes Industrial
+    </a>
+  </div>
+</div>
+
+<!-- Main header -->
+<header class="sticky top-0 z-50 bg-brand-700 shadow-md">
+  <div class="section-container flex items-center justify-between py-4">
+
+    <!-- Logo / site name -->
+    <a href="/" class="no-underline flex flex-col leading-tight">
+      <span class="font-heading text-xl font-bold text-white tracking-wide uppercase">
+        Haynes Industrial
+      </span>
+      <span class="text-xs font-medium text-brand-200 uppercase tracking-widest">
+        Equipment &amp; Materials
+      </span>
     </a>
 
     <!-- Desktop navigation -->
-    <nav aria-label="Main navigation">
-      <ul class="flex items-center gap-6 list-none m-0 p-0">
+    <nav aria-label="Main navigation" class="hidden sm:block">
+      <ul class="flex items-center gap-8 list-none m-0 p-0">
         {NAV_LINKS.map(({ href, label }) => (
           <li>
             <a
               href={href}
               class:list={[
-                'text-sm font-medium no-underline transition-colors',
+                'font-heading text-sm font-semibold uppercase tracking-wide no-underline transition-colors',
                 isActive(href)
-                  ? 'text-brand-600 dark:text-brand-400'
-                  : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white',
+                  ? 'text-gold-400'
+                  : 'text-white hover:text-gold-300',
               ]}
               aria-current={isActive(href) ? 'page' : undefined}
             >
@@ -52,56 +68,60 @@ function isActive(href: string): boolean {
       </ul>
     </nav>
 
-    <!-- Dark mode toggle -->
-    <button
-      id="theme-toggle"
-      type="button"
-      aria-label="Toggle dark mode"
-      class="rounded-md p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white transition-colors"
+    <!-- CTA -->
+    <a
+      href="mailto:jon@haynesindustrial.com"
+      class="btn-primary hidden sm:inline-flex"
     >
-      <!-- Sun icon (shown in dark mode) -->
-      <svg
-        id="icon-sun"
-        class="hidden h-5 w-5 dark:block"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        aria-hidden="true"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-      </svg>
-      <!-- Moon icon (shown in light mode) -->
-      <svg
-        id="icon-moon"
-        class="h-5 w-5 dark:hidden"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        aria-hidden="true"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      Request a Quote
+    </a>
+
+    <!-- Mobile menu toggle (simple, no JS framework) -->
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      class="sm:hidden rounded p-2 text-white hover:bg-brand-600 transition-colors"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
     </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden sm:hidden bg-brand-800 border-t border-brand-600">
+    <nav aria-label="Mobile navigation">
+      <ul class="flex flex-col list-none m-0 p-0">
+        {NAV_LINKS.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'block px-6 py-3 font-heading text-sm font-semibold uppercase tracking-wide no-underline border-b border-brand-700 transition-colors',
+                isActive(href)
+                  ? 'text-gold-400'
+                  : 'text-white hover:text-gold-300 hover:bg-brand-700',
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+        <li class="p-4">
+          <a href="mailto:jon@haynesindustrial.com" class="btn-primary w-full justify-center">
+            Request a Quote
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
 
 <script>
-  // Persist and apply dark mode preference
-  const root = document.documentElement;
-  const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (stored === 'dark' || (!stored && prefersDark)) {
-    root.classList.add('dark');
-  }
-
-  const toggle = document.getElementById('theme-toggle');
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
   toggle?.addEventListener('click', () => {
-    const isDark = root.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    menu?.classList.toggle('hidden');
   });
 </script>
