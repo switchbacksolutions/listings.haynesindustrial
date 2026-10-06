@@ -29,4 +29,3 @@ Brand new Global Vision GVI 6-inch fire pump flow test meter. Unused and in orig
 - Designed for fire pump flow testing and certification per NFPA 25 requirements.
 - Brand new, never used.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

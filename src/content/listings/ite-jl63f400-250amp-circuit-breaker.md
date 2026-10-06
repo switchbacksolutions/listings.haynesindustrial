@@ -29,4 +29,3 @@ Used ITE JL63F400 three-pole circuit breaker, 250 amp, 600V. Pulled from a worki
 
 - Sourced from an operational electrical panel. Best offer considered.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing or to make an offer.

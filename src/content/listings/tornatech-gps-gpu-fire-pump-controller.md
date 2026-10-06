@@ -32,4 +32,3 @@ Brand new Tornatech GPS + GPU electric fire pump controller, model 460/300/3/60.
 
 - Requires professional installation. Designed for industrial and commercial fire suppression systems.
 - Local pickup free from Sacramento, CA 95819. Freight shipping available.
-- Also listed on eBay — contact us directly for best pricing or to make an offer.

@@ -35,4 +35,3 @@ Brand new Greenheck CSP-A390-QD inline cabinet fan. 120V, approximately 1700 CFM
 
 - Suitable for commercial HVAC ductwork, inline ventilation runs, and equipment cooling.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

@@ -33,4 +33,3 @@ New open-box Daikin SmartSource horizontal water source heat pump. Item is in ex
 - Requires professional HVAC installation.
 - Local pickup free from Sacramento, CA 95819. Freight shipping available.
 - Contact us for model number and full specification sheet — photos available on request.
-- Also listed on eBay — contact us directly for best pricing.

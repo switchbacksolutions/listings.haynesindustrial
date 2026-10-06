@@ -30,4 +30,3 @@ Brand new Greenheck CSP-A200-QD cabinet fan. Unused and in original packaging. S
 
 - Commercial-grade cabinet fan suitable for HVAC ventilation applications.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

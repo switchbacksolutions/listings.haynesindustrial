@@ -40,4 +40,3 @@ New open-box Baldor EM4111T 25 horsepower three-phase electric motor. Item is in
 - Inverter duty rated — compatible with VFD applications.
 - TEFC enclosure suitable for harsh industrial environments.
 - Local pickup free from Sacramento, CA 95819. Freight shipping available.
-- Also listed on eBay — contact us directly for best pricing or to make an offer.

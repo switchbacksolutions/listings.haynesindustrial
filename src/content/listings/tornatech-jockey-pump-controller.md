@@ -32,4 +32,3 @@ New open-box Tornatech JP3-460/5/3/60 jockey (pressure maintenance) pump control
 - Designed for fire sprinkler system pressure maintenance (jockey pump duty).
 - Requires professional installation in compliance with NFPA 20.
 - Local pickup free from Sacramento, CA 95819. Freight shipping available.
-- Also listed on eBay — contact us directly for best pricing.

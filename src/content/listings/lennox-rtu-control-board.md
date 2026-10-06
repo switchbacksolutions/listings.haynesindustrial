@@ -34,4 +34,3 @@ Used Lennox OEM rooftop unit (RTU) control board. Fully functional — may show 
 
 - OEM Lennox part. Fully functional.
 - Shipping available. Local pickup free from Sacramento, CA 95819.
-- Also listed on eBay — contact us directly for best pricing.

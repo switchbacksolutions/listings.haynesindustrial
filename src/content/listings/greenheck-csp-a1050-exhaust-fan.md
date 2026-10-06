@@ -33,4 +33,3 @@ Brand new Greenheck CSP-A1050-QD inline cabinet exhaust fan, 115V/60Hz. Unused a
 - Commercial-grade inline cabinet exhaust fan. Suitable for HVAC duct runs, mechanical rooms, or equipment ventilation.
 - Four units available.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

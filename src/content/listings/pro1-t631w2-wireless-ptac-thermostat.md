@@ -35,4 +35,3 @@ Brand new Pro1 T631W-2 wireless PTAC thermostat, in original packaging. Multiple
 - Replacement wireless thermostat for PTAC (Packaged Terminal Air Conditioner) units.
 - Multiple units available — contact for quantity pricing.
 - Shipping available via USPS Ground Advantage. Local pickup free from Sacramento, CA 95819.
-- Also listed on eBay — contact us directly for best pricing.

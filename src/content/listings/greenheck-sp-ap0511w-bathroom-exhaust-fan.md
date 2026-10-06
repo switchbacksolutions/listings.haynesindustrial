@@ -32,4 +32,3 @@ Brand new Greenheck SP-AP0511W-1 bathroom exhaust fan. 120V with adjustable spee
 - Adjustable speed allows CFM to be dialed in for the space.
 - Suitable for commercial restrooms and light commercial ventilation applications.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

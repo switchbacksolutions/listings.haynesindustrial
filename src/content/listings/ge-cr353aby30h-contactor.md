@@ -33,4 +33,3 @@ Used GE CR353ABY30H definite purpose contactor. Pulled from a working unit and n
 
 - Pulled from working equipment, not modified.
 - Shipping available via USPS Ground Advantage. Local pickup free from Sacramento, CA 95819.
-- Also listed on eBay — contact us directly for best pricing.

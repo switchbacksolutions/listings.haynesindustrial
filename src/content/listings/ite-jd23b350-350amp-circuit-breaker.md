@@ -32,4 +32,3 @@ Used ITE JD23B350 three-pole bolt-on circuit breaker, tested and confirmed opera
 - Pulled from a working panel and tested prior to listing.
 - May exhibit cosmetic wear; fully functional.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

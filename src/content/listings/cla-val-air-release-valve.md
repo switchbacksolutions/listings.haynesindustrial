@@ -32,4 +32,3 @@ New open-box Cla-Val model 21056731D fire protection system air release valve. A
 - Designed for fire protection system air release applications.
 - Specify your required inlet size when contacting.
 - Shipping available. Local pickup free from Sacramento, CA 95819.
-- Also listed on eBay — contact us directly for best pricing.

@@ -30,4 +30,3 @@ New open-box Baldor 5HP electric motor, model 36K926T860G1, 184TCZ frame, dual v
 
 - Best offer considered — contact us to negotiate.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

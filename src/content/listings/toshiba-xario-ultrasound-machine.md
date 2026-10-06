@@ -31,4 +31,3 @@ Used Toshiba Xario ultrasound machine in working condition. Sourced from a vein 
 - Buyer responsible for verifying compatibility with intended probes and accessories.
 - Local pickup free from Sacramento, CA 95819. Freight shipping available.
 - Contact us for photos and additional details.
-- Also listed on eBay — contact us directly for best pricing.

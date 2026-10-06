@@ -31,4 +31,3 @@ Brand new Cla-Val 2" float valve, model 124-01-4891F (also references part 124-0
 
 - Brand new, never installed.
 - Local pickup free from Sacramento, CA 95819. Shipping available.
-- Also listed on eBay — contact us directly for best pricing.

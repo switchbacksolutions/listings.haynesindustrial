@@ -35,4 +35,3 @@ Brand new Pentair self-priming centrifugal fire pump rated at 1500 gallons per m
 
 - Suitable for large-scale fire suppression systems, industrial facilities, and municipal applications.
 - Local pickup available from Sacramento, CA. Freight shipping available.
-- Also listed on eBay — contact us directly for best pricing.

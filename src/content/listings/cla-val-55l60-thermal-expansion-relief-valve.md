@@ -32,4 +32,3 @@ New open-box Cla-Val 55L-60 (model 31HM) thermal expansion pressure relief valve
 - Suitable for fire protection, domestic water, and plumbing applications requiring thermal expansion relief.
 - Two units available.
 - Shipping available. Local pickup free from Sacramento, CA 95819.
-- Also listed on eBay — contact us directly for best pricing.
