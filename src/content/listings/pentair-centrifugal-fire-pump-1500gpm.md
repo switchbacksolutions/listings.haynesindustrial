@@ -3,7 +3,6 @@ title: 'Pentair Centrifugal Fire Pump — 1500 GPM, 200 PSI'
 description: 'Brand new Pentair self-priming centrifugal fire pump rated at 1500 GPM and 200 PSI. Cast iron housing, electric powered. Never used, in original packaging. Sacramento, CA.'
 category: 'Fire Protection'
 condition: 'New'
-price: '$11,000'
 sku: 'EB-397623420891'
 images:
   - '/images/listings/pentair-centrifugal-fire-pump-1500gpm/1.jpg'
@@ -35,5 +34,5 @@ Brand new Pentair self-priming centrifugal fire pump rated at 1500 gallons per m
 ## Details
 
 - Suitable for large-scale fire suppression systems, industrial facilities, and municipal applications.
-- Local pickup available from Sacramento, CA. Freight shipping available ($2,500 estimated).
+- Local pickup available from Sacramento, CA. Freight shipping available.
 - Also listed on eBay — contact us directly for best pricing.

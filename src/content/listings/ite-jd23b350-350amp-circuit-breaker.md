@@ -3,7 +3,6 @@ title: 'ITE JD23B350 Circuit Breaker — 350A, 3-Pole, 240V, Tested'
 description: 'Used ITE JD23B350 350 amp, 3-pole, 240V bolt-on circuit breaker. 22kA interrupting rating. Tested and fully operational. Pulled from working panel. Sacramento, CA.'
 category: 'Electrical'
 condition: 'Good'
-price: '$400'
 sku: 'EB-397724386857'
 images:
   - '/images/listings/ite-jd23b350-350amp-circuit-breaker/1.jpg'
@@ -32,5 +31,5 @@ Used ITE JD23B350 three-pole bolt-on circuit breaker, tested and confirmed opera
 
 - Pulled from a working panel and tested prior to listing.
 - May exhibit cosmetic wear; fully functional.
-- Local pickup free from Sacramento, CA 95819. Shipping available ($75 estimated).
+- Local pickup free from Sacramento, CA 95819. Shipping available.
 - Also listed on eBay — contact us directly for best pricing.

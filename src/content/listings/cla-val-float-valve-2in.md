@@ -3,7 +3,6 @@ title: 'Cla-Val Float Valve 124-01-4891F — 2", Brand New in Box'
 description: 'Brand new Cla-Val 2" float valve, model 124-01-4891F. Never used, flanged design. Industrial float valve for water storage, fire protection, or process control applications.'
 category: 'Fire Protection'
 condition: 'Like New'
-price: '$3,500'
 sku: 'EB-397591023686'
 images:
   - '/images/listings/cla-val-float-valve-2in/1.jpg'
@@ -31,5 +30,5 @@ Brand new Cla-Val 2" float valve, model 124-01-4891F (also references part 124-0
 ## Details
 
 - Brand new, never installed.
-- Local pickup free from Sacramento, CA 95819. Shipping available ($100 estimated).
+- Local pickup free from Sacramento, CA 95819. Shipping available.
 - Also listed on eBay — contact us directly for best pricing.

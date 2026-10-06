@@ -3,7 +3,6 @@ title: 'Baldor EM4111T Electric Motor — 25 HP, 3-Phase, 230/460V'
 description: 'New open-box Baldor EM4111T 25HP three-phase electric motor. 1180 RPM, 230/460V, TEFC enclosure, inverter duty rated, 324T frame. Excellent condition, no functional defects.'
 category: 'Motors & Drives'
 condition: 'Like New'
-price: '$4,000'
 sku: 'EB-397714891249'
 images:
   - '/images/listings/baldor-em4111t-25hp-electric-motor/1.jpg'
@@ -40,5 +39,5 @@ New open-box Baldor EM4111T 25 horsepower three-phase electric motor. Item is in
 
 - Inverter duty rated — compatible with VFD applications.
 - TEFC enclosure suitable for harsh industrial environments.
-- Local pickup free from Sacramento, CA 95819. Freight shipping available ($800 estimated).
+- Local pickup free from Sacramento, CA 95819. Freight shipping available.
 - Also listed on eBay — contact us directly for best pricing or to make an offer.

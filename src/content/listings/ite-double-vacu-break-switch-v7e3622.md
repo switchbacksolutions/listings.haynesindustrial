@@ -3,7 +3,6 @@ title: 'ITE Double Vacu-Break Switch V7E3622 — 60A, 600V, 3-Phase'
 description: 'Used ITE Double Vacu-Break Switch V7E3622, 60 amp, 600V, 3-phase. Fully operational — pulled from working installation. Cosmetic wear only. Best offer considered. Sacramento, CA.'
 category: 'Electrical'
 condition: 'Good'
-price: '$500'
 sku: 'EB-397724421586'
 images:
   - '/images/listings/ite-double-vacu-break-switch-v7e3622/1.jpg'
@@ -31,5 +30,5 @@ Used ITE Double Vacu-Break Switch model V7E3622, 60A/600V/3-phase. Fully operati
 
 - Pulled from a working installation, not modified.
 - Best offer considered — contact us to negotiate.
-- Local pickup free from Sacramento, CA 95819. Shipping available ($80 FedEx Ground estimated).
+- Local pickup free from Sacramento, CA 95819. Shipping available.
 - Also listed on eBay — contact us directly for best pricing.

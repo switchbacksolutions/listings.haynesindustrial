@@ -3,7 +3,6 @@ title: 'Lennox RTU OEM Control Board — 45L74 / 30L0801 / HB-01905DA'
 description: 'Used Lennox OEM rooftop unit control board, part numbers 45L74, 30L0801, HB-01905DA. 115V, 3A. Fully functional. Compatible with Lennox RTU models 45L74 and 93J2001. Sacramento, CA.'
 category: 'HVAC'
 condition: 'Good'
-price: '$100'
 sku: 'EB-397571775343'
 images:
   - '/images/listings/lennox-rtu-control-board/1.jpg'
@@ -34,5 +33,5 @@ Used Lennox OEM rooftop unit (RTU) control board. Fully functional — may show 
 ## Details
 
 - OEM Lennox part. Fully functional.
-- Shipping available ($35 FedEx Ground estimated). Local pickup free from Sacramento, CA 95819.
+- Shipping available. Local pickup free from Sacramento, CA 95819.
 - Also listed on eBay — contact us directly for best pricing.

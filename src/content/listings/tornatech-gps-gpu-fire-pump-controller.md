@@ -3,7 +3,6 @@ title: 'Tornatech GPS + GPU Electric Fire Pump Controller — 460V 3-Phase'
 description: 'Brand new Tornatech GPS + GPU electric fire pump controller, 460V/300A/3-phase/60Hz. Never used, original packaging. Ideal for large commercial or industrial fire suppression systems.'
 category: 'Fire Protection'
 condition: 'New'
-price: '$8,000'
 sku: 'EB-397440112726'
 images:
   - '/images/listings/tornatech-gps-gpu-fire-pump-controller/1.jpg'
@@ -32,5 +31,5 @@ Brand new Tornatech GPS + GPU electric fire pump controller, model 460/300/3/60.
 ## Details
 
 - Requires professional installation. Designed for industrial and commercial fire suppression systems.
-- Local pickup free from Sacramento, CA 95819. Freight shipping available ($1,000 flat rate).
+- Local pickup free from Sacramento, CA 95819. Freight shipping available.
 - Also listed on eBay — contact us directly for best pricing or to make an offer.

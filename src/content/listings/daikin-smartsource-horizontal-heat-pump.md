@@ -3,7 +3,6 @@ title: 'Daikin SmartSource Horizontal Water Source Heat Pump'
 description: 'New open-box Daikin SmartSource horizontal water source heat pump. Excellent condition, no functional defects. Tested/demo unit from Sacramento. Local pickup or freight.'
 category: 'HVAC'
 condition: 'Like New'
-price: '$3,500'
 sku: 'EB-397594658186'
 images:
   - '/images/listings/daikin-smartsource-horizontal-heat-pump/1.jpg'
@@ -32,6 +31,6 @@ New open-box Daikin SmartSource horizontal water source heat pump. Item is in ex
 
 - Suitable for commercial or large residential water source heat pump systems.
 - Requires professional HVAC installation.
-- Local pickup free from Sacramento, CA 95819. Freight shipping available ($800 estimated).
+- Local pickup free from Sacramento, CA 95819. Freight shipping available.
 - Contact us for model number and full specification sheet — photos available on request.
 - Also listed on eBay — contact us directly for best pricing.

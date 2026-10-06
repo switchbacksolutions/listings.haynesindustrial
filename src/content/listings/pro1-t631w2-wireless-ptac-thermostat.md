@@ -3,7 +3,6 @@ title: 'Pro1 T631W-2 Wireless PTAC Thermostat — Brand New'
 description: 'Brand new Pro1 T631W-2 wireless PTAC thermostat. Digital, non-programmable, heat-cool-off switching, 2 heat / 1 cool stages. White. Multiple units available. Fast shipping.'
 category: 'HVAC'
 condition: 'New'
-price: '$53'
 sku: 'EB-397566825598'
 images:
   - '/images/listings/pro1-t631w2-wireless-ptac-thermostat/1.jpg'
@@ -35,5 +34,5 @@ Brand new Pro1 T631W-2 wireless PTAC thermostat, in original packaging. Multiple
 
 - Replacement wireless thermostat for PTAC (Packaged Terminal Air Conditioner) units.
 - Multiple units available — contact for quantity pricing.
-- Fast shipping: $6.01 USPS Ground Advantage. Local pickup free from Sacramento, CA 95819.
+- Shipping available via USPS Ground Advantage. Local pickup free from Sacramento, CA 95819.
 - Also listed on eBay — contact us directly for best pricing.

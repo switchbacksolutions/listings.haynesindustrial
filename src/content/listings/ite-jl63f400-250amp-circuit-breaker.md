@@ -3,7 +3,6 @@ title: 'ITE JL63F400 Circuit Breaker — 250A, 3-Pole, 600V'
 description: 'Used ITE JL63F400 250 amp, 3-pole, 600V circuit breaker. Pulled from a working electrical panel. Fully operational. Best offer considered. Sacramento, CA.'
 category: 'Electrical'
 condition: 'Good'
-price: '$300'
 sku: 'EB-397724439912'
 images:
   - '/images/listings/ite-jl63f400-250amp-circuit-breaker/1.jpg'
@@ -29,5 +28,5 @@ Used ITE JL63F400 three-pole circuit breaker, 250 amp, 600V. Pulled from a worki
 ## Details
 
 - Sourced from an operational electrical panel. Best offer considered.
-- Local pickup free from Sacramento, CA 95819. Shipping available ($80 estimated).
+- Local pickup free from Sacramento, CA 95819. Shipping available.
 - Also listed on eBay — contact us directly for best pricing or to make an offer.
